@@ -21,7 +21,7 @@ export class CreateGames1639263104518 implements MigrationInterface {
           },
           {
             name: "price",
-            type: "int",
+            type: "double",
           },
           {
             name: "platform",
