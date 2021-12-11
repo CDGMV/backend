@@ -7,18 +7,20 @@ interface IUpdateUserRequest {
   email?: string;
   password?: string;
   name?: string;
-  bio?: string;
+  cpf?: string;
+  birthDate?: Date;
   phone?: string;
 }
 
 export class UpdateUserService {
   async execute({
     id,
-    bio = "",
     email = "",
     password = "",
-    phone = "",
     name = "",
+    birthDate = null,
+    cpf = "",
+    phone = "",
   }: IUpdateUserRequest) {
     const usersRepositories = getCustomRepository(UsersRepositories);
 
@@ -37,8 +39,9 @@ export class UpdateUserService {
       email: email || user.email,
       password: hashPassword || user.password,
       name: name || user.name,
-      bio: bio || user.bio,
       phone: phone || user.phone,
+      cpf: cpf || user.cpf,
+      birthDate: birthDate || user.birthDate,
     });
 
     return updateUser;

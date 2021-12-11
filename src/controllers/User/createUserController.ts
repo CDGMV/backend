@@ -5,13 +5,17 @@ import { CreateUserService } from "../../services/User/CreateUserService";
 
 export default {
   async handle(req: Request, res: Response) {
-    const { email, password } = req.body;
+    const { email, password, name, birthDate, cpf, phone } = req.body;
 
     const createUserService = new CreateUserService();
 
     const user = await createUserService.execute({
       email,
       password,
+      name,
+      birthDate,
+      cpf,
+      phone,
     });
 
     const authenticateUserService = new AuthenticateUserService();

@@ -12,12 +12,34 @@ export class CreateUsers1628461923985 implements MigrationInterface {
             isPrimary: true,
           },
           {
+            name: "name",
+            type: "varchar",
+          },
+          {
+            name: "phone",
+            type: "varchar",
+            isNullable: true,
+          },
+          {
+            name: "cpf",
+            type: "varchar",
+          },
+          {
+            name: "birthDate",
+            type: "date",
+          },
+          {
             name: "email",
             type: "varchar",
           },
           {
             name: "password",
             type: "varchar",
+          },
+          {
+            name: "isAdmin",
+            type: "boolean",
+            default: false,
           },
           {
             name: "created_at",
@@ -28,21 +50,6 @@ export class CreateUsers1628461923985 implements MigrationInterface {
             name: "updated_at",
             type: "timestamp",
             default: "now()",
-          },
-          {
-            name: "name",
-            type: "varchar",
-            isNullable: true,
-          },
-          {
-            name: "bio",
-            type: "varchar",
-            isNullable: true,
-          },
-          {
-            name: "phone",
-            type: "varchar",
-            isNullable: true,
           },
         ],
       })
