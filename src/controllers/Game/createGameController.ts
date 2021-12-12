@@ -1,6 +1,6 @@
 import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
-import { CreateGamerService } from "../../services/Gamer/CreateGamerService";
+import { CreateGameService } from "../../services/Gamer/CreateGameService";
 
 export default {
   async handle(req: Request, res: Response) {
@@ -22,8 +22,8 @@ export default {
 
     // const token = await authenticateUserService.execute(email, password);
 
-    // const data = instanceToPlain(user);
+    const data = instanceToPlain(game);
 
-    // return res.status(201).send({ ...data, token });
+    return res.status(201).send({ ...data});
   },
 };
