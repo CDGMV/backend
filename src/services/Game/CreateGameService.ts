@@ -5,7 +5,7 @@ import { hash } from "bcryptjs";
 interface IRequestGame {
   name: string;
   genre: string;
-  ageRestriction: bigint;
+  ageRestriction: number;
   price: number;
   platform: string;
   description: string;
@@ -23,42 +23,41 @@ export class CreateGameService {
     logo,
   }: IRequestGame) {
     if (!name) {
-      throw new Error("Name Invalid");
+      throw new Error("Name can't be NULL");
     }
 
     if (!genre) {
-      throw new Error("Genre Invalid");
+      throw new Error("Genre can't be NULL");
     }
 
     if (!ageRestriction) {
-      throw new Error("Age Restriction Invalid");
+      throw new Error("Age Restriction can't be NULL");
     }
 
     if (!price) {
-      throw new Error("Price Invalid");
+      throw new Error("Price can't be NULL");
     }
 
     if (!platform) {
-      throw new Error("Platform Invalid");
+      throw new Error("Platform can't be NULL");
     }
 
     if (!description) {
-      throw new Error("Description Invalid");
+      throw new Error("Description can't be NULL");
     }
 
     if (!logo) {
-        throw new Error("Logo Invalid");
+      throw new Error("Logo can't be NULL");
     }
-  
 
     const gamesRepositories = getCustomRepository(GamesRepositories);
 
-    const gameAlreadyExists = await gamesRepositories.findOne({ name });    
+    const gameAlreadyExists = await gamesRepositories.findOne({ name });
 
     if (gameAlreadyExists) {
       throw new Error("Game Already Exists");
     }
-    
+
     const game = gamesRepositories.create({
       name: name,
       genre: genre,
@@ -67,7 +66,6 @@ export class CreateGameService {
       platform: platform,
       description: description,
       logo: logo,
-      users_id: null,
     });
 
     await gamesRepositories.save(game);

@@ -9,6 +9,6 @@ export default {
 
     const result = await deleteUserService.execute(user_id);
 
-    return res.send({ ...result, message: "User deleted" });
+    return res.send({ message: "User deleted" });
   },
 };

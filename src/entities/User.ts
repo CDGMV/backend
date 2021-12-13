@@ -2,11 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
+  OneToMany,
   PrimaryColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
-import { Exclude } from "class-transformer";
+import { Rent } from "./Rent";
 
 @Entity("users")
 export class User {
@@ -25,16 +27,19 @@ export class User {
   @Column()
   birthDate: Date;
 
-  @Exclude()
   @Column()
   isAdmin: boolean;
 
   @Column()
   email: string;
 
-  @Exclude()
   @Column()
   password: string;
+
+  @OneToMany(() => Rent, (rent) => rent.user, {
+    eager: true,
+  })
+  rents: Rent[];
 
   @CreateDateColumn()
   created_at: Date;

@@ -23,7 +23,6 @@ export default {
     const token = await authenticateUserService.execute(email, password);
 
     const data = instanceToPlain(user);
-
     return res.status(201).send({ ...data, token });
   },
 };

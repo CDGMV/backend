@@ -25,8 +25,7 @@ export class CreateGames1639263104518 implements MigrationInterface {
           },
           {
             name: "platform",
-            type: "enum",
-            enum: ["PC", "PS4", "XBOX", "Nintendo"],
+            type: "varchar",
           },
           {
             name: "description",
@@ -37,20 +36,14 @@ export class CreateGames1639263104518 implements MigrationInterface {
             type: "varchar",
           },
           {
-            name: "users_id",
-            type: "varchar",
-            isNullable: true,
-            default: null,
+            name: "created_at",
+            type: "timestamp",
+            default: "now()",
           },
-        ],
-        foreignKeys: [
           {
-            name: "FKGamesUsers",
-            referencedTableName: "users",
-            referencedColumnNames: ["id"],
-            columnNames: ["users_id"],
-            onUpdate: "CASCADE",
-            onDelete: "NO ACTION",
+            name: "updated_at",
+            type: "timestamp",
+            default: "now()",
           },
         ],
       })
